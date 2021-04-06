@@ -14,7 +14,7 @@ We are looking to take input from users that includes their contact information 
 - handlebars
 - [Chart.js](https://www.npmjs.com/package/chart.js)
 
-## Vaccination information
+## Vaccination information (Database) 
 - Name
 - Date of Birth
 - Patient Number
@@ -26,7 +26,7 @@ We are looking to take input from users that includes their contact information 
 - Healthcare Professional or Clinic Site
 
 ## Wireframe
-
+![Wireframe](./assets/wireframe.jpg)
 ## Future Developments:
 - Local events for vaccinated individuals
 - Using institutions to legitimatize input data
