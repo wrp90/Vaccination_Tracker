@@ -1,0 +1,26 @@
+[
+    {
+        "name": "Sal",
+        "DOB": "6/8/1966",
+        "email": "sal@hotmail.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Lernantino",
+        "DOB": "2/18/1983",
+        "email": "lernantino@gmail.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Amiko",
+        "DOB": "3/15/1975",
+        "email": "amiko2k20@aol.com",
+        "password": "password12345"
+    },
+    {
+        "name": "Shawn",
+        "DOB": "9/2/1987",
+        "email": "shawizkool@hotmail.com",
+        "password": "password12345"
+    }
+]

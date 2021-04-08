@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
 class Vaccine extends Model {}
-
+//Add extra validations
 Vaccine.init(
   {
     id: {
@@ -16,11 +16,11 @@ Vaccine.init(
       allowNull: false,
     },
     first_dose: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       allowNull: false
     },
     second_dose: {
-      type: DataTypes.STRING,
+      type: DataTypes.BOOLEAN,
       allowNull: false
     },
     vaccine_name: {
