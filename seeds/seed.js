@@ -12,12 +12,12 @@ const seedDatabase = async () => {
     returning: true,
   });
 
-  for (const vaccine of vaccineData) {
-    await Vaccine.create({
-      ...vaccine,
-      user_id: users[Math.floor(Math.random() * users.length)].id,
-    });
-  }
+  // for (const vaccine of vaccineData) {
+  //   await Vaccine.create({
+  //     ...vaccine,
+  //     user_id: users[Math.floor(Math.random() * patient.length)].id,
+  //   });
+  // }
 
   process.exit(0);
 };
