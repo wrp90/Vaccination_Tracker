@@ -31,6 +31,14 @@ Vaccine.init(
       type: DataTypes.STRING,
       allowNull: false
     },
+    patient_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'patient',
+        key: 'id',
+      },
+    },
+
   },
   {
     sequelize,
