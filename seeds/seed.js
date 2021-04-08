@@ -7,17 +7,17 @@ const vaccineData = require('./vaccineData.json');
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
-  const users = await Patient.bulkCreate(patientData, {
+  const patients = await Patient.bulkCreate(patientData, {
     individualHooks: true,
     returning: true,
   });
 
-  // for (const vaccine of vaccineData) {
-  //   await Vaccine.create({
-  //     ...vaccine,
-  //     user_id: users[Math.floor(Math.random() * patient.length)].id,
-  //   });
-  // }
+  for (const vaccine of vaccineData) {
+    await Vaccine.create({
+      ...vaccine,
+      patient_id: patients[Math.floor(Math.random() * patients.length)].id,
+    });
+  }
 
   process.exit(0);
 };

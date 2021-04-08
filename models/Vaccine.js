@@ -13,23 +13,19 @@ Vaccine.init(
     },
     patient_number: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     first_dose: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
     },
     second_dose: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
     },
     vaccine_name: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     location_name: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     patient_id: {
       type: DataTypes.INTEGER,
