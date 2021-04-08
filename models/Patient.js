@@ -21,7 +21,7 @@ Patient.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    DOB: {
+    date_of_birth: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -56,7 +56,7 @@ Patient.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
+    modelName: 'patient',
   }
 );
 
