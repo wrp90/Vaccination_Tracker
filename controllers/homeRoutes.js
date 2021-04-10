@@ -47,6 +47,7 @@ router.get('/database', async (req, res) => {
   }
 });
 
+
 router.get('/vcard', async (req, res) => {
   try {
     const userData = await Patient.findByPk(1, {
@@ -60,6 +61,25 @@ router.get('/vcard', async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
+    }
+});
+
+router.get('/form', (req, res) => {
+  if (req.session.logged_in) {
+    res.redirect('/');
+    return;
+  }
+  res.render('form');
+});
+
+router.post('/form', async (req, res) => {
+  try {
+    const userData = await Patient.create(req.body);
+    console.log(userData);
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+
   }
 });
 
