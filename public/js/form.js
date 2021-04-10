@@ -1,4 +1,4 @@
-const formHandler = async (event) => {
+const formHandler = (event) => {
   event.preventDefault();
 
   // Collect values from the form
@@ -10,7 +10,7 @@ const formHandler = async (event) => {
 
   if (name && patientNum && vaccineName) {
     // Send a POST request to the API endpoint
-    const response = await fetch('/form', {
+    const response = fetch('/form', {
       method: 'POST',
       body: JSON.stringify({ name, patientNum, vaccineName, vaccineOne, vaccineTwo }),
       headers: { 'Content-Type': 'application/json' },
