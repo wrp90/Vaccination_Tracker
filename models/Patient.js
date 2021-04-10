@@ -22,9 +22,9 @@ Patient.init(
       allowNull: false,
     },
     date_of_birth: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,

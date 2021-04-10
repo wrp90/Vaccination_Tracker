@@ -4,27 +4,31 @@
         "first_dose": true,
         "second_dose": false,
         "vaccine_name": "Pfizer",
-        "location_name": "Clinic A"
+        "location_name": "Clinic A",
+        "patient_id": 1
     },
     {
         "patient_number": 32246754,
         "first_dose": true,
         "second_dose": true,
         "vaccine_name": "Moderna",
-        "location_name": "Clinic B"
+        "location_name": "Clinic B",
+        "patient_id": 2
     },
     {
         "patient_number": 10776097,
         "first_dose": true,
         "second_dose": false,
         "vaccine_name": "Janssen",
-        "location_name": "Clinic B"
+        "location_name": "Clinic B",
+        "patient_id": 3
     },
     {
         "patient_number": 33421145,
         "first_dose": true,
         "second_dose": true,
         "vaccine_name": "Pfizer",
-        "location_name": "Clinic C"
+        "location_name": "Clinic C",
+        "patient_id": 4
     }
 ]
