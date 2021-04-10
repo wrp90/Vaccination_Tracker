@@ -1,1 +1,24 @@
-<p>hello!</p>
+{{#each patients as |patient|}}
+<div id="cards" class="grid-container">
+    <div class="grid-x grid-margin-x small-up-2 medium-up-3">
+        <div class="cell">
+            <div class="card">
+                <div id="nameId1" class="card-divider">
+                    <p>{{vaccine.patient_id}}</p>
+                    <p>{{vaccine.vaccine_name}}</p>
+                    <p>{{vaccine.location_name}}</p>
+                    <p>First Dose: {{vaccine.first_dose}}</p>
+                    <p>Second Dose: {{vaccine.second_dose}}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/each}}
+{{!-- patient id
+vaccine name
+location
+first dose
+second dose --}}
