@@ -74,12 +74,13 @@ router.get('/form', (req, res) => {
 
 router.post('/form', async (req, res) => {
   try {
-    const userData = await Patient.create(req.body);
-    console.log(userData);
+    console.log((req.body));
+    const user = await Patient.findOne({ name: 'Shawn' });
+    const userData = await Vaccine.create({ ...req.body, id: user.id });
     res.status(200).json(userData);
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
-
   }
 });
 
