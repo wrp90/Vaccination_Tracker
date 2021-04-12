@@ -1,4 +1,4 @@
-const formHandler = async (event) => {
+const formHandler = (event) => {
   event.preventDefault();
 
   // Collect values from the form
@@ -26,6 +26,18 @@ const formHandler = async (event) => {
       });
     } catch (e) {
       console.log(e);
+//     const response = fetch('/form', {
+//       method: 'POST',
+//       body: JSON.stringify({ name, patientNum, vaccineName, vaccineOne, vaccineTwo }),
+//       headers: { 'Content-Type': 'application/json' },
+//     });
+
+//     console.log(response);
+//     if (response.ok) {
+//       // If successful, redirect the browser to the profile page
+//       document.location.replace('/');
+//     } else {
+//       alert(response.statusText);
     }
     // if (response.ok) {
     //   // If successful, redirect the browser to the profile page
