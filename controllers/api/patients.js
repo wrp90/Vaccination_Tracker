@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Patient } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
@@ -17,13 +17,16 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
+  console.log('we are here 20');
+  console.log('email', req.body.email);
+  console.log('password', req.body.password);
   try {
-    const userData = await User.findOne({ where: { username: req.body.username } });
-
+    const userData = await Patient.findOne({ where: { email: req.body.email } });
+    console.log('we are here 25');
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect username, please try again' });
+        .json({ message: 'Incorrect email, please try again' });
       return;
     }
 
@@ -35,7 +38,7 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect password, please try again' });
       return;
     }
-
+    console.log('we are here 39');
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
