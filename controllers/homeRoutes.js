@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get('/database', async (req, res) => {
+router.get('/database', withAuth, async (req, res) => {
   try {
     // Get all projects and JOIN with user data
     const patientData = await Patient.findAll({
@@ -36,11 +36,10 @@ router.get('/database', async (req, res) => {
 
     // Serialize data so the template can read it
     const patients = patientData.map((patient) => patient.get({ plain: true }));
-    console.log(patients);
     // Pass serialized data and session flag into template
     res.render('database', {
       patients,
-      //   logged_in: req.session.logged_in
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -48,16 +47,17 @@ router.get('/database', async (req, res) => {
 });
 
 
-router.get('/vcard', async (req, res) => {
+router.get('/vcard', withAuth, async (req, res) => {
   try {
-    const userData = await Patient.findByPk(1, {
+    const userData = await Patient.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },
       include: [{ model: Vaccine}],
     });
     const patient = userData.get({ plain: true });
     console.log(patient);
     res.render('vaccinecard', {
-      patient
+      patient,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -74,12 +74,10 @@ router.get('/form', (req, res) => {
 
 router.post('/form', async (req, res) => {
   try {
-    console.log((req.body));
     const user = await Patient.findOne({ name: 'Shawn' });
     const userData = await Vaccine.create({ ...req.body, id: user.id });
     res.status(200).json(userData);
   } catch (err) {
-    console.log(err);
     res.status(400).json(err);
   }
 });

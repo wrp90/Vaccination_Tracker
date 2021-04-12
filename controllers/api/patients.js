@@ -17,12 +17,8 @@ router.post('/', async (req, res) => {
 });
 
 router.post('/login', async (req, res) => {
-  console.log('we are here 20');
-  console.log('email', req.body.email);
-  console.log('password', req.body.password);
   try {
     const userData = await Patient.findOne({ where: { email: req.body.email } });
-    console.log('we are here 25');
     if (!userData) {
       res
         .status(400)
@@ -38,11 +34,10 @@ router.post('/login', async (req, res) => {
         .json({ message: 'Incorrect password, please try again' });
       return;
     }
-    console.log('we are here 39');
+
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
