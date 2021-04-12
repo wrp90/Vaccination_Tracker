@@ -11,7 +11,7 @@ const formHandler = (event) => {
   if (name && patientNum && vaccineName) {
     // Send a POST request to the API endpoint
     try {
-      const response = await fetch('/form', {
+      const response = /*await*/ fetch('/form', {
         method: 'POST',
         //TODO: Replace 'name' with logged username name
         body: JSON.stringify({
