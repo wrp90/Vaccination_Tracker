@@ -1,9 +1,9 @@
 const router = require('express').Router();
-const { Patient } = require('../../models');
+const { Patient, Vaccine } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await Patient.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -41,6 +41,17 @@ router.post('/login', async (req, res) => {
       res.json({ user: userData, message: 'You are now logged in!' });
     });
 
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
+router.post('/form', async (req, res) => {
+  console.log(req);
+  try {
+    const user = await Patient.findOne({ name: 'Shawn' });
+    const userData = await Vaccine.create({ ...req.body, id: user.id });
+    res.status(200).json(userData);
   } catch (err) {
     res.status(400).json(err);
   }

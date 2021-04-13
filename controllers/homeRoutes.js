@@ -48,7 +48,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
     });
   } catch (err) {
     res.status(500).json(err);
-    }
+  }
 });
 
 router.get('/form', (req, res) => {
@@ -57,17 +57,6 @@ router.get('/form', (req, res) => {
     return;
   }
   res.render('form');
-});
-
-router.post('/form', async (req, res) => {
-  console.log(req);
-  try {
-    const user = await Patient.findOne({ name: 'Shawn' });
-    const userData = await Vaccine.create({ ...req.body, id: user.id });
-    res.status(200).json(userData);
-  } catch (err) {
-    res.status(400).json(err);
-  }
 });
 
 router.get('/login', (req, res) => {
