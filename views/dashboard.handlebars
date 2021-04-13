@@ -1,6 +1,9 @@
+<head>
 <style>
 body {font-family: Arial, Helvetica, sans-serif;}
-
+.currentDay {
+  text-align: center;
+}
 /* The Modal (background) */
 .modal {
   display: none; /* Hidden by default */
@@ -14,15 +17,24 @@ body {font-family: Arial, Helvetica, sans-serif;}
   overflow: auto; /* Enable scroll if needed */
   background-color: rgb(0,0,0); /* Fallback color */
   background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  text-align: center;
 }
-
+.modal-header {
+  text-align: center;
+}
 /* Modal Content */
 .modal-content {
   background-color: #fefefe;
+  background-image: url(https://tennessee.cdn-anvilcms.net/media/images/2020/03/16/images/cdc_badge.max-2400x1350.png);
+  background-repeat: no-repeat;
+  background-position: right;
+  text-align: center;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 80%;
+  animation-name:open;
+  animation-duration:1s;
 }
 
 /* The Close Button */
@@ -39,33 +51,78 @@ body {font-family: Arial, Helvetica, sans-serif;}
   text-decoration: none;
   cursor: pointer;
 }
+.greeting {
+  font-family: 'Pacifico', cursive;
+  font-size;
+}
+@keyframes open{
+  from{opacity: 0}
+  to{opacity: 1}
+}
+
 </style>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 </head>
+
 <body>
+<div class="currentDay">
+  <p id="clock-div" class="lead"></p>
+</div>
+<div>
+  <h1 class="greeting">Hi! {{patient.name}}</h1>
+</div>
 
-<h2>Digital Vaccination Card</h2>
-
-<!-- Trigger/Open The Modal -->
-<button class="text-center" id="myBtn">Click to View</button>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="https://www.pinclipart.com/picdir/big/174-1745859_health-id-card-credencial-png-clipart.png" class="card-img-top" alt="...">
+      <div class="text-center card-body">
+        <h5 class="card-title">Digital Vaccination Card</h5>
+        <button type="button" class="btn btn-primary text-center" id="myBtn">Click to View</button>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="text-center card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Feature 2</p>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="..." class="card-img-top" alt="...">
+      <div class="text-center card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Feature 3</p>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
+<div id="vaccineModal" class="modal">
   <div class="modal-content">
-    <span class="close">&times;</span>
+    <div class="modal-header">
+      <span class="close">&times;</span>
+      <h2>Digital Vaccination Card</h2>
+    </div>
+    <div class="modal-body">
     <p>Patient Id: {{patient.vaccine.patient_id}}</p>
     <p>Name of Vaccine: {{patient.vaccine.vaccine_name}}</p>
     <p>Location of Vaccination: {{patient.vaccine.location_name}}</p>
     <p>First Dose: {{patient.vaccine.first_dose}}</p>
     <p>Second Dose: {{patient.vaccine.second_dose}}</p>
+    </div>
   </div>
-
 </div>
 
 <script>
 // Get the modal
-var modal = document.getElementById("myModal");
+var modal = document.getElementById("vaccineModal");
 
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
