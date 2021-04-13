@@ -1,74 +1,4 @@
-<head>
-<style>
-body {font-family: Arial, Helvetica, sans-serif;}
-.currentDay {
-  text-align: center;
-}
-/* The Modal (background) */
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-  text-align: center;
-}
-.modal-header {
-  text-align: center;
-}
-/* Modal Content */
-.modal-content {
-  background-color: #fefefe;
-  background-image: url(https://tennessee.cdn-anvilcms.net/media/images/2020/03/16/images/cdc_badge.max-2400x1350.png);
-  background-repeat: no-repeat;
-  background-position: right;
-  text-align: center;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  animation-name:open;
-  animation-duration:1s;
-}
 
-/* The Close Button */
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-.greeting {
-  font-family: 'Pacifico', cursive;
-  font-size;
-}
-@keyframes open{
-  from{opacity: 0}
-  to{opacity: 1}
-}
-
-</style>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-</head>
-
-<body>
-<div class="currentDay">
-  <p id="clock-div" class="lead"></p>
-</div>
 <div>
   <h1 class="greeting">Hi! {{patient.name}}</h1>
 </div>
@@ -120,30 +50,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   </div>
 </div>
 
-<script>
-// Get the modal
-var modal = document.getElementById("vaccineModal");
+<script src="./js/dashboard.js"></script>
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-</script>
