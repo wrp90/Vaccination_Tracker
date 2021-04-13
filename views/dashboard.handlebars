@@ -1,6 +1,14 @@
 
-<div>
+<div class="greeting">
   <h1 class="greeting">Hi! {{patient.name}}</h1>
+</div>
+<div class="container col align-self-center">
+  <div class="row">
+    <div class="clearfix greeting-text col-6 col align-self-center">
+      <h3>Below you will find access to all of our features now that you're signed up to the Digital Vaccination Registry.
+      </h3>
+    </div>
+  </div>
 </div>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -17,7 +25,7 @@
     <div class="card h-100">
       <img src="..." class="card-img-top" alt="...">
       <div class="text-center card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 id="myChart" class="card-title">Card title</h5>
         <p class="card-text">Feature 2</p>
       </div>
     </div>
@@ -26,13 +34,16 @@
     <div class="card h-100">
       <img src="..." class="card-img-top" alt="...">
       <div class="text-center card-body">
-        <h5 class="card-title">Card title</h5>
+        <h5 id="myChart" class="card-title">Card title</h5>
         <p class="card-text">Feature 3</p>
       </div>
     </div>
   </div>
 </div>
 
+<div>
+<canvas id="myChart" width="400" height="400"></canvas>
+</div>
 <!-- The Modal -->
 <div id="vaccineModal" class="modal">
   <div class="modal-content">

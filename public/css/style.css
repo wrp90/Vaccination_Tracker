@@ -51,7 +51,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
 }
 .greeting {
   font-family: 'Pacifico', cursive;
-  
+  text-align: center;
+}
+.greeting-text {
+    font-family: 'Kiwi Maru', serif;
+    text-align: center;
 }
 @keyframes open{
   from{opacity: 0}
