@@ -60,6 +60,7 @@ router.get('/form', (req, res) => {
 });
 
 router.post('/form', async (req, res) => {
+  console.log(req);
   try {
     const user = await Patient.findOne({ name: 'Shawn' });
     const userData = await Vaccine.create({ ...req.body, id: user.id });
