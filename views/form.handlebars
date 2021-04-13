@@ -4,27 +4,33 @@
 
     <form class="form signup-form">
       <div class="form-group">
-        <label for="patientNum-signup">patient number:</label>
+        <label for="patientNum-signup">Patient Number:</label>
         <input class="form-input" type="text" id="patientNum-signup" />
       </div>
       <div class="form-group">
-        <label for="vaccineName-signup">vaccine name:</label>
+        <label for="vaccineName-signup">Vaccine Name:</label>
         <input class="form-input" type="text" id="vaccineName-signup" />
       </div>
       <div class="form-group">
-        <label for="vaccineOne-signup">vaccine one:</label>
-        <input class="form-input" type="boolean" id="vaccineOne-signup" />
+        <label for="vaccineOne-signup">Vaccine One:</label>
+        <select class="form-input" name="vaccineOne-signup" id="vaccineOne-signup">
+          <option value="true">Yes</option>
+          <option value="false">No</option>
+        </select>
       </div>
       <div class="form-group">
-        <label for="vaccineTwo-signup">vaccine two:</label>
-        <input class="form-input" type="boolean" id="vaccineTwo-signup" />
+        <label for="vaccineTwo-signup">Vaccine Two:</label>
+          <select class="form-input" name="vaccineTwo-signup" id="vaccineTwo-signup">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+          </select>
       </div>
             <div class="form-group">
-        <label for="locationName-signup">location name:</label>
+        <label for="locationName-signup">Location Name:</label>
         <input class="form-input" type="text" id="locationName-signup" />
       </div>
       <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
+        <button class="btn btn-primary" type="submit">Signup</button>
       </div>
     </form>
   </div>

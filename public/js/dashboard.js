@@ -1,5 +1,5 @@
 // Get the modal
-var modal = document.querySelector('vaccineModal').trim();
+var modal = document.querySelector('vaccineModal');
 
 // Get the button that opens the modal
 var btn = document.getElementById('myBtn');

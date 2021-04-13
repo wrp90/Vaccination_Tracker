@@ -47,11 +47,13 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/form', async (req, res) => {
-  console.log(req);
   try {
-    const user = await Patient.findOne({ name: 'Shawn' });
-    const userData = await Vaccine.create({ ...req.body, id: user.id });
-    res.status(200).json(userData);
+    const user = await Vaccine.create({
+      ...req.body,
+      patient_id: req.session.user_id
+    });
+
+    res.status(200).json(user);
   } catch (err) {
     res.status(400).json(err);
   }
