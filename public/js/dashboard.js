@@ -1,4 +1,5 @@
-var Chart = require('chart.js');
+var canvas = document.querySelector('canvas');
+var ctx = canvas.getContext('2d');
 // Get the modal
 var modal = document.getElementById('vaccineModal');
 
@@ -25,8 +26,8 @@ window.onclick = function(event) {
   }
 };
 
-var ctx = 'myChart';
-var myChart = new Chart(ctx, {
+
+var config = {
   type: 'bar',
   data: {
     labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
@@ -59,4 +60,6 @@ var myChart = new Chart(ctx, {
       }
     }
   }
-});
+};
+
+new Chart(ctx, config);
