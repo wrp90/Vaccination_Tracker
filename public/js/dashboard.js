@@ -31,9 +31,9 @@ window.onclick = function(event) {
 var config = {
   type: 'bar',
   data: {
-    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    labels: ['First Dose', 'Fully Vaccinated', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [{
-      label: '# of Votes',
+      label: 'Vaccination Data',
       data: [12, 19, 3, 5, 2, 3],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
