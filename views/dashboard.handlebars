@@ -14,28 +14,9 @@
   </div>
 </div>
 <!-- The chart -->
-<div class="container">
+{{!-- <div class="container">
   <canvas>id="mychart"</canvas>
-</div>
-<script>
-  let myChart = document.getElementById('myChart').getContext('2d');
-  let vacChart = new Chart(myChart, {
-    type: 'bar',
-    data:{
-      labels:['First Dose', 'Second Dose']
-      datasets:[{
-        label:'dose1',
-        data: [
-        1,
-        2,
-        3,
-        7
-        ]
-        }]
-    },
-    options:{}
-  });
-</script>
+</div> --}}
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col">
@@ -68,9 +49,6 @@
   </div>
 </div>
 
-<div>
-<canvas id="myChart" width="50" height="50"></canvas>
-</div>
 
 <!-- The Modal -->
 <div id="vaccineModal" class="modal">
