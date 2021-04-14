@@ -1,3 +1,4 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <div class="greeting">
   <h1 class="greeting">Hi! {{patient.name}}</h1>
@@ -12,6 +13,29 @@
     <div class="col-3"></div>
   </div>
 </div>
+<!-- The chart -->
+<div class="container">
+  <canvas>id="mychart"</canvas>
+</div>
+<script>
+  let myChart = document.getElementById('myChart').getContext('2d');
+  let vacChart = new Chart(myChart, {
+    type: 'bar',
+    data:{
+      labels:['First Dose', 'Second Dose']
+      datasets:[{
+        label:'dose1',
+        data: [
+        1,
+        2,
+        3,
+        7
+        ]
+        }]
+    },
+    options:{}
+  });
+</script>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
   <div class="col">
@@ -29,6 +53,7 @@
       <div class="text-center card-body">
         <h5 id="myChart" class="card-title">Card title</h5>
         <p class="card-text">Feature 2</p>
+        <canvas id="myChart" width="400" height="400"></canvas>
       </div>
     </div>
   </div>
@@ -46,6 +71,7 @@
 <div>
 <canvas id="myChart" width="50" height="50"></canvas>
 </div>
+
 <!-- The Modal -->
 <div id="vaccineModal" class="modal">
   <div class="modal-content">

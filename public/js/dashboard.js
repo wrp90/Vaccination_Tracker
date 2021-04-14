@@ -1,5 +1,7 @@
+
 var canvas = document.querySelector('canvas');
 var ctx = canvas.getContext('2d');
+
 // Get the modal
 var modal = document.getElementById('vaccineModal');
 
@@ -25,7 +27,6 @@ window.onclick = function(event) {
     modal.style.display = 'none';
   }
 };
-
 
 var config = {
   type: 'bar',
@@ -63,3 +64,4 @@ var config = {
 };
 
 new Chart(ctx, config);
+
