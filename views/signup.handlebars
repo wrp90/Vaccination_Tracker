@@ -1,26 +1,28 @@
-<div class="col-md-6">
-    <h2>Signup</h2>
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">Name:</label>
-        <input class="form-input" type="text" id="name-signup"/>
-      </div>
-      <div class="form-group">
-        <label for="email-signup">Email:</label>
-        <input class="form-input" type="text" id="email-signup"/>
-      </div>
-      <div class="form-group">
-        <label for="dob-signup">Date of Birth:</label>
-        <input class="form-input" type="text" id="dob-signup"/>
-      </div>
-      <div class="form-group">
-        <label for="password-signup">Password:</label>
-        <input class="form-input" type="password" id="password-signup"/>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">Signup</button>
-      </div>
-    </form>
+<div class="card">
+  <div class="col-md-12 text-center">
+      <h2 class="card-header">Signup</h2>
+      <form class="form signup-form card-body" >
+        <div class="form-group p-1 text-center">
+          {{!-- <label for="name-signup">Name:</label> --}}
+          <input class="form-input" placeholder="Name" type="text" id="name-signup"/>
+        </div>
+        <div class="form-group p-1">
+          {{!-- <label for="email-signup">Email:</label> --}}
+          <input class="form-input" placeholder ="Email" type="text" id="email-signup"/>
+        </div>
+        <div class="form-group p-1">
+          {{!-- <label for="dob-signup">Date of Birth:</label> --}}
+          <input class="form-input" placeholder="Date of Birth" type="text" id="dob-signup"/>
+        </div>
+        <div class="form-group p-1">
+          {{!-- <label for="password-signup">Password:</label> --}}
+          <input class="form-input" placeholder="Password" type="password" id="password-signup"/>
+        </div>
+        <div class="form-group p-1">
+          <button class="btn btn-primary" type="submit">Signup</button>
+        </div>
+      </form>
+  </div>
 </div>
 
 <script src="./js/signup.js"></script>
