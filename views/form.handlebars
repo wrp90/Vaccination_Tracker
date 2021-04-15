@@ -1,35 +1,31 @@
-<div class="row">
-  <div class="col-md-12">
-    <h2>Input information</h2>
-
+<div class="card">
+  <div class="col-md-12 text-center">
+    <h2>Vaccination Card Information</h2>
     <form class="form signup-form">
-      <div class="form-group">
-        <label for="patientNum-signup">Patient Number:</label>
-        <input class="form-input" type="text" id="patientNum-signup" />
+      <div class="form-group p-1">
+        <input class="form-input" type="text" placeholder="Patient Number" id="patientNum-signup" />
       </div>
-      <div class="form-group">
-        <label for="vaccineName-signup">Vaccine Name:</label>
-        <input class="form-input" type="text" id="vaccineName-signup" />
+      <div class="form-group p-1">
+        <input class="form-input" type="text" placeholder="Vaccine Name"  id="vaccineName-signup" />
       </div>
-      <div class="form-group">
+            <div class="form-group p-1">
+        <input class="form-input" type="text"  placeholder="Location Name"  id="locationName-signup" />
+      </div>
+      <div class="form-group p-1">
         <label for="vaccineOne-signup">Vaccine One:</label>
         <select class="form-input" name="vaccineOne-signup" id="vaccineOne-signup">
           <option value="true">Yes</option>
           <option value="false">No</option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group p-1">
         <label for="vaccineTwo-signup">Vaccine Two:</label>
           <select class="form-input" name="vaccineTwo-signup" id="vaccineTwo-signup">
             <option value="true">Yes</option>
             <option value="false">No</option>
           </select>
       </div>
-            <div class="form-group">
-        <label for="locationName-signup">Location Name:</label>
-        <input class="form-input" type="text" id="locationName-signup" />
-      </div>
-      <div class="form-group">
+      <div class="form-group p-1">
         <button class="btn btn-primary" type="submit">Signup</button>
       </div>
     </form>
