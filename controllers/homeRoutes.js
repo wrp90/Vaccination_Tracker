@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Vaccine, Patient } = require('../models');
 const withAuth = require('../utils/auth');
+const sequelize = require('../config/connection');
 
 router.get('/', async (req, res) => {
   try {
@@ -46,20 +47,25 @@ router.get('/database', withAuth, async (req, res) => {
   }
 });
 
-
 router.get('/dashboard', withAuth, async (req, res) => {
   try {
     const userData = await Patient.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
       include: [{ model: Vaccine}],
+      attributes: { exclude: ['password'] },
     });
+    // console.log('User Data:', userData);
     const patient = userData.get({ plain: true });
-    console.log(patient);
+    const firstDose = await Vaccine.findAll({
+      attributes: { include: [[ sequelize.literal('(SELECT SUM(first_dose) FROM vaccine)'), 'firstDose']] }
+    });
+    console.log('first dose:', firstDose);
     res.render('dashboard', {
       patient,
+      firstDose,
       logged_in: req.session.logged_in
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
