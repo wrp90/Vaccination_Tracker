@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Patient, Vaccine } = require('../../models');
+const sequelize = require('../../config/connection');
 
 router.post('/', async (req, res) => {
   try {
@@ -15,6 +16,20 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+
+// router.get('/chart', async (req, res) => {
+//   console.log('Code works here')
+//   try {
+//     const firstDose = await Vaccine.findAll({
+//       attributes: { include: [[ sequelize.literal('(SELECT SUM(first_dose) FROM vaccine)'), 'firstDose']] }
+//     });
+//     console.log('first dose:', firstDose)
+//     res.status(200).json(firstDose);
+//   } catch (err) {
+//     console.log(err);
+//     res.status(500).json(err);
+//   }
+// });
 
 router.post('/login', async (req, res) => {
   try {

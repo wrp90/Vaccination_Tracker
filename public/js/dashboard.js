@@ -34,7 +34,7 @@ var config = {
     labels: ['First Dose', 'Fully Vaccinated', 'Yellow', 'Green', 'Purple', 'Orange'],
     datasets: [{
       label: 'Vaccination Data',
-      data: [12, 19, 3, 5, 2, 3],
+      data: [12, 13, 99, 43, 23, 41],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',
@@ -63,5 +63,22 @@ var config = {
   }
 };
 
+
+// async function getChartData() {
+//   const response = await fetch('/api/patients/chart', {
+//     method: 'GET',
+//   }
+//   ).then(res => {
+//     console.log(res);
+//   })
+
+//   if (response.ok) {
+//     console.log(response);
+//   } else {
+//     alert(response.statusText);
+//   }
+// };
+
+// getChartData();
 new Chart(ctx, config);
 
