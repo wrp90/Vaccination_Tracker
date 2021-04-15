@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Vaccine, Patient } = require('../models');
 const withAuth = require('../utils/auth');
-const sequelize = require('../config/connection');
 
 router.get('/', async (req, res) => {
   try {
@@ -53,15 +52,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
       include: [{ model: Vaccine}],
       attributes: { exclude: ['password'] },
     });
-    // console.log('User Data:', userData);
     const patient = userData.get({ plain: true });
-    const firstDose = await Vaccine.findAll({
-      attributes: { include: [[ sequelize.literal('(SELECT SUM(first_dose) FROM vaccine)'), 'firstDose']] }
-    });
-    console.log('first dose:', firstDose);
     res.render('dashboard', {
       patient,
-      firstDose,
       logged_in: req.session.logged_in
     });
   } catch (err) {

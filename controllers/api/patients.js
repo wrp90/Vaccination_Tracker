@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Patient, Vaccine } = require('../../models');
+const sequelize = require('../../config/connection');
 
 router.post('/', async (req, res) => {
   try {
@@ -13,6 +14,34 @@ router.post('/', async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
+  }
+});
+
+router.get('/chart', async (req, res) => {
+  try {
+    const totalDose = await Vaccine.findAll({
+      attributes: {
+        include: [
+          [sequelize.literal('(SELECT SUM(first_dose) FROM vaccine WHERE first_dose)'), 'firstDose'],
+          [sequelize.literal('(SELECT SUM(second_dose) FROM vaccine WHERE second_dose)'), 'secondDose']
+        ],
+        exclude: [
+          'id',
+          'first_dose',
+          'location_name',
+          'patient_id',
+          'patient_number',
+          'second_dose',
+          'vaccine_name'
+        ],
+      }
+    });
+    const doseTotals = totalDose.map((totalDoses) => totalDoses.get({ plain: true }));
+
+    res.send(doseTotals);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
   }
 });
 
