@@ -23,7 +23,8 @@ router.get('/chart', async (req, res) => {
       attributes: {
         include: [
           [sequelize.literal('(SELECT SUM(first_dose) FROM vaccine WHERE first_dose)'), 'firstDose'],
-          [sequelize.literal('(SELECT SUM(second_dose) FROM vaccine WHERE second_dose)'), 'secondDose']
+          [sequelize.literal('(SELECT SUM(second_dose) FROM vaccine WHERE second_dose)'), 'secondDose'],
+          [sequelize.literal('(SELECT COUNT(*) FROM vaccine)'), 'totalPatients']
         ],
         exclude: [
           'id',
@@ -37,7 +38,7 @@ router.get('/chart', async (req, res) => {
       }
     });
     const doseTotals = totalDose.map((totalDoses) => totalDoses.get({ plain: true }));
-
+    console.log(doseTotals)
     res.send(doseTotals);
   } catch (err) {
     console.log(err);

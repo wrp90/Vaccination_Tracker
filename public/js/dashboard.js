@@ -31,23 +31,27 @@ async function getChartData() {
       throw response;
     }
   }).then(function(response){
-    const doseTotal = [parseInt(response[0].firstDose[0]), parseInt(response[0].secondDose[0])];
+    console.log(response);
+    const doseTotal = [parseInt(response[0].firstDose[0]), parseInt(response[0].secondDose[0]), response[0].totalPatients];
     return doseTotal;
   }).then(function(endResponse){
+    console.log(endResponse);
     const config = {
       type: 'bar',
       data: {
-        labels: ['First Dose', 'Fully Vaccinated'],
+        labels: ['First Dose', 'Fully Vaccinated', 'Total Patients'],
         datasets: [{
           label: 'Vaccination Data',
           data: endResponse,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
+            'rgba(255, 206, 86, 0.2)',
           ],
           borderColor: [
             'rgba(255, 99, 132, 1)',
             'rgba(54, 162, 235, 1)',
+            'rgba(255, 206, 86, 1)',
           ],
           borderWidth: 1
         }]
