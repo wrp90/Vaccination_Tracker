@@ -1,6 +1,6 @@
 const formHandler = async (event) => {
   event.preventDefault();
-
+  // login form
   // Collect values from the form
   //const name = document.querySelector('#name-signup').value.trim();
   const patientNum = document.querySelector('#patientNum-signup').value.trim();
