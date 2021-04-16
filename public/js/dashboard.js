@@ -21,8 +21,6 @@ window.onclick = function(event) {
   }
 };
 
-
-
 async function getChartData() {
   await fetch('/api/patients/chart', {
     method: 'GET',
