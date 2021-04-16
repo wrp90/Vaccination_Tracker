@@ -17,19 +17,33 @@ router.post('/', async (req, res) => {
   }
 });
 
-// router.get('/chart', async (req, res) => {
-//   console.log('Code works here')
-//   try {
-//     const firstDose = await Vaccine.findAll({
-//       attributes: { include: [[ sequelize.literal('(SELECT SUM(first_dose) FROM vaccine)'), 'firstDose']] }
-//     });
-//     console.log('first dose:', firstDose)
-//     res.status(200).json(firstDose);
-//   } catch (err) {
-//     console.log(err);
-//     res.status(500).json(err);
-//   }
-// });
+router.get('/chart', async (req, res) => {
+  try {
+    const totalDose = await Vaccine.findAll({
+      attributes: {
+        include: [
+          [sequelize.literal('(SELECT SUM(first_dose) FROM vaccine WHERE first_dose)'), 'firstDose'],
+          [sequelize.literal('(SELECT SUM(second_dose) FROM vaccine WHERE second_dose)'), 'secondDose']
+        ],
+        exclude: [
+          'id',
+          'first_dose',
+          'location_name',
+          'patient_id',
+          'patient_number',
+          'second_dose',
+          'vaccine_name'
+        ],
+      }
+    });
+    const doseTotals = totalDose.map((totalDoses) => totalDoses.get({ plain: true }));
+
+    res.send(doseTotals);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 router.post('/login', async (req, res) => {
   try {

@@ -1,26 +1,19 @@
-
-var canvas = document.querySelector('canvas');
-var ctx = canvas.getContext('2d');
-
+const canvas = document.querySelector('canvas');
+const ctx = canvas.getContext('2d');
 // Get the modal
-var modal = document.getElementById('vaccineModal');
-
+const modal = document.getElementById('vaccineModal');
 // Get the button that opens the modal
-var btn = document.getElementById('myBtn');
-
+const btn = document.getElementById('myBtn');
 // Get the <span> element that closes the modal
-var span = document.getElementsByClassName('close')[0];
-
+const span = document.getElementsByClassName('close')[0];
 // When the user clicks the button, open the modal
 btn.onclick = function() {
   modal.style.display = 'block';
 };
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = 'none';
 };
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target === modal) {
@@ -28,57 +21,47 @@ window.onclick = function(event) {
   }
 };
 
-var config = {
-  type: 'bar',
-  data: {
-    labels: ['First Dose', 'Fully Vaccinated', 'Yellow', 'Green', 'Purple', 'Orange'],
-    datasets: [{
-      label: 'Vaccination Data',
-      data: [12, 13, 99, 43, 23, 41],
-      backgroundColor: [
-        'rgba(255, 99, 132, 0.2)',
-        'rgba(54, 162, 235, 0.2)',
-        'rgba(255, 206, 86, 0.2)',
-        'rgba(75, 192, 192, 0.2)',
-        'rgba(153, 102, 255, 0.2)',
-        'rgba(255, 159, 64, 0.2)'
-      ],
-      borderColor: [
-        'rgba(255, 99, 132, 1)',
-        'rgba(54, 162, 235, 1)',
-        'rgba(255, 206, 86, 1)',
-        'rgba(75, 192, 192, 1)',
-        'rgba(153, 102, 255, 1)',
-        'rgba(255, 159, 64, 1)'
-      ],
-      borderWidth: 1
-    }]
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true
-      }
+async function getChartData() {
+  await fetch('/api/patients/chart', {
+    method: 'GET',
+  }).then(function (response) {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw response;
     }
-  }
-};
+  }).then(function(response){
+    const doseTotal = [parseInt(response[0].firstDose[0]), parseInt(response[0].secondDose[0])];
+    return doseTotal;
+  }).then(function(endResponse){
+    const config = {
+      type: 'bar',
+      data: {
+        labels: ['First Dose', 'Fully Vaccinated'],
+        datasets: [{
+          label: 'Vaccination Data',
+          data: endResponse,
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(54, 162, 235, 0.2)',
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)',
+            'rgba(54, 162, 235, 1)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    };
+    new Chart(ctx, config);
+  });
+}
 
-
-// async function getChartData() {
-//   const response = await fetch('/api/patients/chart', {
-//     method: 'GET',
-//   }
-//   ).then(res => {
-//     console.log(res);
-//   })
-
-//   if (response.ok) {
-//     console.log(response);
-//   } else {
-//     alert(response.statusText);
-//   }
-// };
-
-// getChartData();
-new Chart(ctx, config);
-
+getChartData();
