@@ -20,11 +20,16 @@ router.post('/', async (req, res) => {
 router.get('/chart', async (req, res) => {
   try {
     const totalDose = await Vaccine.findAll({
+      include: [
+        {
+          model: Patient
+        },
+      ],
       attributes: {
         include: [
           [sequelize.literal('(SELECT SUM(first_dose) FROM vaccine WHERE first_dose)'), 'firstDose'],
           [sequelize.literal('(SELECT SUM(second_dose) FROM vaccine WHERE second_dose)'), 'secondDose'],
-          [sequelize.literal('(SELECT COUNT(*) FROM vaccine)'), 'totalPatients']
+          [sequelize.literal('(SELECT COUNT(*) FROM patient)'), 'totalPatients']
         ],
         exclude: [
           'id',
