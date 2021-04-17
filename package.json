@@ -33,7 +33,8 @@
     "foundation": "^4.2.1-1",
     "foundation-sites": "^6.6.3",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
     "eslint": "^7.23.0",
