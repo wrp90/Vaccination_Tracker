@@ -38,3 +38,5 @@ https://github.com/wrp90/Vaccination_Tracker
 5. Once the database has been created, use "npm run seed" in the terminal while in the root folder if example data is needed.
 
 ## Screenshots
+
+![Getting Started](./assets/project2.png)
