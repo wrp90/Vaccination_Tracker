@@ -6,6 +6,7 @@ const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const favicon = require('serve-favicon');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,7 +24,7 @@ const sess = {
 };
 
 app.use(session(sess));
-
+app.use(favicon(path.join(__dirname, 'public', 'logo.ico')));
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
