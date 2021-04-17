@@ -31,11 +31,9 @@ async function getChartData() {
       throw response;
     }
   }).then(function(response){
-    console.log(response);
-    const doseTotal = [parseInt(response[0].firstDose[0]), parseInt(response[0].secondDose[0]), response[0].totalPatients];
+    const doseTotal = [response[0].firstDose, response[0].secondDose, response[0].totalPatients];
     return doseTotal;
   }).then(function(endResponse){
-    console.log(endResponse);
     const config = {
       type: 'bar',
       data: {
